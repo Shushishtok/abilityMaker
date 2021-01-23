@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { KVObject, serialize } from 'valve-kv';
+import { KVObject, serialize, createDuplicateKeyArray } from 'valve-kv';
 import { AbilityBehavior, AbilityKV, AbilitySpecialBlock, DifferentlyNamedAbilityKVs, PrecacheKV, PrecacheType, SpellDispellableTypes, SpellImmunityTypes, UnitTargetTeam, UnitTargetType, VarTypes } from "./abilitymakerInterfaces"
 
 class AbilityCompiler
@@ -136,8 +136,7 @@ class AbilityCompiler
                 }                
 
                 else if (Array.isArray(value))
-                {
-                    console.log(`${key} is an array`)
+                {                    
                     // Numeric arrays
                     if (typeof value[0] === 'number')
                     {
@@ -201,20 +200,35 @@ class AbilityCompiler
                         else if (this.IsPrecacheKV(value[0]))
                         {
                             // Create precache token                            
-                            const precache_token = actual_value["precache"] = {};
+                            const precache_token = actual_value = {};
+                            const precache_types_map: Map<PrecacheType, string[]> = new Map();
 
+                            // Register each precache type and its paths
                             for (const precache of value)
-                            {
-                                const precacheKV = precache as PrecacheKV;
-                                precache_token[precacheKV.PrecacheType] = precacheKV.path;
+                            {                               
+                                const precacheKV = precache as PrecacheKV;                                
+                                if (precache_types_map.has(precacheKV.PrecacheType))
+                                {                                    
+                                    const precache_type_array = precache_types_map.get(precacheKV.PrecacheType);
+                                    precache_type_array.push(precacheKV.path);
+                                }
+                                else
+                                {
+                                    precache_types_map.set(precacheKV.PrecacheType, [precacheKV.path]);
+                                }
+                            }
+
+                            // Create duplicate key arrays for each type
+                            for (const [type, paths] of precache_types_map.entries()) 
+                            {                                
+                                precache_token[type] = createDuplicateKeyArray(paths);
                             }
                         }
                     }
 
                     // One of the custom enum arrays
                     else
-                    {
-                        console.log(`${key} is a custom enum array`)
+                    {                        
                         const seperator = " | ";
                         let enums = "";
                         for (let index = 0; index < value.length; index++)
@@ -231,8 +245,7 @@ class AbilityCompiler
                     }
                 }
 
-                ability_tokens[actual_key] = actual_value;
-                console.log(ability_tokens[actual_key]);
+                ability_tokens[actual_key] = actual_value;                
             }
 
             // Add the ability token to the ability name            

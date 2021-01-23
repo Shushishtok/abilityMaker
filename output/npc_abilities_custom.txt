@@ -18,16 +18,8 @@
         "AbilityCharges"    "2"
         "precache"
         {
-            "1"
-            {
-                "PrecacheType"    "model"
-                "path"    "models/props/skulls_and_bones.vmdl"
-            }
-            "2"
-            {
-                "PrecacheType"    "particle"
-                "path"    "particles/heroes/sven/great_cleave.vcfp"
-            }
+            "model"    "models/props/skulls_and_bones.vmdl"
+            "particle"    "particles/heroes/sven/great_cleave.vcfp"
         }
         "AbilitySpecial"
         {
@@ -57,26 +49,10 @@
         "FightRecapLevel"    "1"
         "precache"
         {
-            "1"
-            {
-                "PrecacheType"    "soundfile"
-                "path"    "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
-            }
-            "2"
-            {
-                "PrecacheType"    "particle"
-                "path"    "particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf"
-            }
-            "3"
-            {
-                "PrecacheType"    "particle"
-                "path"    "particles/units/heroes/hero_dazzle/dazzle_poison_debuff.vpcf"
-            }
-            "4"
-            {
-                "PrecacheType"    "particle"
-                "path"    "particles/status_fx/status_effect_poison_dazzle.vpcf"
-            }
+            "soundfile"    "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+            "particle"    "particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf"
+            "particle"    "particles/units/heroes/hero_dazzle/dazzle_poison_debuff.vpcf"
+            "particle"    "particles/status_fx/status_effect_poison_dazzle.vpcf"
         }
         "AbilityUnitTargetTeam"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
