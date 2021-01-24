@@ -47,7 +47,7 @@ export interface AbilityKV
     DisplayAdditionalHeroes?: boolean;
     TextureName?: string;
     Precache?: Array<PrecacheKV>;
-    AnimationPlaybackRate?: number;
+    AnimationPlaybackRate?: Array<number> | number;
     AbilityDraftUltScepterPreAbility?: string;
     Modelscale?: number;
     AssociatedConsumable?: number;
@@ -102,6 +102,7 @@ export interface AbilitySpecialBlock
     CalculateSpellDamageTooltip?: boolean;
     LinkedSpecialBonusField?: string;
     LinkedSpecialBonusOperation?: LinkedSpecialBonusOperation;
+    RequiresScepter?: boolean;
 }
 
 export interface PrecacheKV
@@ -1521,6 +1522,7 @@ export enum GameActivity
     DOTA_RUN_ALT = "ACT_DOTA_RUN_ALT",
     DOTA_CYCLONE = "ACT_DOTA_CYCLONE",
     DOTA_IMPALE = "ACT_DOTA_IMPALE",
+    INVALID = "ACT_INVALID"
 }
 
 export enum DamageType
