@@ -1,5 +1,5 @@
 {
-  "name": "ability_generator",
+  "name": "@shushishtok/ability_generator",
   "version": "1.0.1",
   "description": "Create abilities by Typescript",
   "main": "index.js",
