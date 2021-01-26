@@ -1,10 +1,9 @@
 {
   "name": "@shushishtok/ability_generator",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "Create abilities by Typescript",
-  "main": "index.js",
   "scripts": {
-    "test": "echo hi"
+    "postinstall": "node install.js"
   },
   "keywords": [
     "Dota",
