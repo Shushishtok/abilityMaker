@@ -2,7 +2,6 @@
   "name": "@shushishtok/ability_generator",
   "version": "1.0.2",
   "description": "Create abilities by Typescript",
-  "main": "index.js",
   "scripts": {
     "test": "echo hi"
   },
