@@ -4,7 +4,8 @@ import { KVObject, serialize, createDuplicateKeyArray } from 'valve-kv';
 
 export class AbilityCompiler
 {
-	filepath = "node_modules/~kv/npc_abilities_custom.txt";
+	filename = "npc_abilities_custom.txt"
+	filepath = "node_modules/~kv/" + this.filename;
 	Abilities: Array<AbilityKV> = new Array();
 	ability_objects: KVObject = {};
 
@@ -89,9 +90,9 @@ export class AbilityCompiler
 									token[ability_block_data.Name] = AbilityBuilder.FillNumericKVValues(ability_block_data.Values);
 								}
 
-								if (ability_block_data.CalculateSpellDamageTooltip)
+								if (ability_block_data.CalculateSpellDamageTooltip != undefined)
 								{
-									token["CalculateSpellDamageTooltip"] = ability_block_data.CalculateSpellDamageTooltip;
+									token["CalculateSpellDamageTooltip"] = ability_block_data.CalculateSpellDamageTooltip ? "1" : "0";
 								}
 
 								if (ability_block_data.LinkedSpecialBonus)
@@ -177,7 +178,7 @@ export class AbilityCompiler
 		// Write to file
 		let abilitiesLength = Object.keys(this.ability_objects).length;
 		let abilityName = abilitiesLength == 1 ? "ability" : "abilities";
-		fs.writeFile(this.filepath, serialized_kv, ()=>{console.log("\x1b[36m%s\x1b[0m", `Wrote ${abilitiesLength} ${abilityName} to ${this.filepath} successfully.`)});
+		fs.writeFile(this.filepath, serialized_kv, ()=>{console.log("\x1b[36m%s\x1b[0m", `Wrote ${abilitiesLength} ${abilityName} to ${this.filename} successfully.`)});
 	}
 }
 
