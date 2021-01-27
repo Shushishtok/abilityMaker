@@ -4,8 +4,11 @@ import { AbilityCompiler } from './abilitymakerCompiler';
 const watch = require("node-watch");
 
 let completeData: {[path: string]: Array<AbilityKV>} = {};
+let gathering = false;
 const resourcePath = "node_modules/~kv/abilities";
 const generatorPath = __dirname;
+
+let compiler = loadCompiler();
 
 let watcher = watch([resourcePath, generatorPath + "/abilitymakerCompiler.js"], {recursive: true})
 watcher.on("change", (eventType ?: 'update' | 'remove' | undefined, filePath ?: string) => {
@@ -19,12 +22,12 @@ watcher.on("change", (eventType ?: 'update' | 'remove' | undefined, filePath ?: 
 		const data = getDataFromFile(curpath + ".js");
 		if (data) {
 			completeData[curpath] = data;
-			combineData();
+			gatherData();
 		}
 	} else if (eventType == "remove" && match) {
 		if (completeData.hasOwnProperty(match[2])) {
 			delete completeData[match[2]];
-			combineData();
+			gatherData();
 		}
 	}
 })
@@ -39,8 +42,6 @@ watcher.on("ready", () => {
 	console.log("\x1b[32m%s\x1b[0m", "Ready!");
 })
 
-let compiler = loadCompiler();
-
 function getDataFromFile(filePath: string):  Array<AbilityKV> | undefined {
 	if (!fs.existsSync("node_modules/" + filePath)){
 		return;
@@ -54,7 +55,15 @@ function getDataFromFile(filePath: string):  Array<AbilityKV> | undefined {
 	return;
 }
 
-function combineData() {
+function gatherData() {
+	if (!gathering) {
+		gathering = true;
+		setTimeout(flushData, 100);
+	}
+}
+
+function flushData() {
+	gathering = false;
 	compiler.OnAbilityDataChanged(completeData);
 }
 

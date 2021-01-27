@@ -22,8 +22,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = __importStar(require("fs"));
 var watch = require("node-watch");
 var completeData = {};
+var gathering = false;
 var resourcePath = "node_modules/~kv/abilities";
 var generatorPath = __dirname;
+var compiler = loadCompiler();
 var watcher = watch([resourcePath, generatorPath + "/abilitymakerCompiler.js"], { recursive: true });
 watcher.on("change", function (eventType, filePath) {
     if (!filePath)
@@ -37,13 +39,13 @@ watcher.on("change", function (eventType, filePath) {
         var data = getDataFromFile(curpath + ".js");
         if (data) {
             completeData[curpath] = data;
-            combineData();
+            gatherData();
         }
     }
     else if (eventType == "remove" && match) {
         if (completeData.hasOwnProperty(match[2])) {
             delete completeData[match[2]];
-            combineData();
+            gatherData();
         }
     }
 });
@@ -55,7 +57,6 @@ watcher.on("error", function (error) {
 watcher.on("ready", function () {
     console.log("\x1b[32m%s\x1b[0m", "Ready!");
 });
-var compiler = loadCompiler();
 function getDataFromFile(filePath) {
     if (!fs.existsSync("node_modules/" + filePath)) {
         return;
@@ -68,7 +69,14 @@ function getDataFromFile(filePath) {
     }
     return;
 }
-function combineData() {
+function gatherData() {
+    if (!gathering) {
+        gathering = true;
+        setTimeout(flushData, 100);
+    }
+}
+function flushData() {
+    gathering = false;
     compiler.OnAbilityDataChanged(completeData);
 }
 function loadCompiler() {
