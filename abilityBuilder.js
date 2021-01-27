@@ -1,46 +1,46 @@
 "use strict";
 // import { AbilitySpecialBlock, DifferentlyNamedAbilityKVs, PrecacheKV, PrecacheType, VarTypes } from "./abilitymakerInterfaces";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbilityBuilder = void 0;
 // import { AbilitySpecialBlock, DifferentlyNamedAbilityKVs, PrecacheKV, PrecacheType, VarTypes } from "@shushishtok/ability_generator/output/code/abilitymakerInterfaces";
 var DifferentlyNamedAbilityKVsDynamic;
 (function (DifferentlyNamedAbilityKVsDynamic) {
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Type"] = DifferentlyNamedAbilityKVs.Type] = "Type";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Behavior"] = DifferentlyNamedAbilityKVs.Behavior] = "Behavior";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["OnCastBar"] = DifferentlyNamedAbilityKVs.OnCastBar] = "OnCastBar";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["OnLearnBar"] = DifferentlyNamedAbilityKVs.OnLearnBar] = "OnLearnBar";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["CastRange"] = DifferentlyNamedAbilityKVs.CastRange] = "CastRange";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["CastRangeBuffer"] = DifferentlyNamedAbilityKVs.CastRangeBuffer] = "CastRangeBuffer";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["CastPoint"] = DifferentlyNamedAbilityKVs.CastPoint] = "CastPoint";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ChannelTime"] = DifferentlyNamedAbilityKVs.ChannelTime] = "ChannelTime";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Cooldown"] = DifferentlyNamedAbilityKVs.Cooldown] = "Cooldown";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Duration"] = DifferentlyNamedAbilityKVs.Duration] = "Duration";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["SharedCooldown"] = DifferentlyNamedAbilityKVs.SharedCooldown] = "SharedCooldown";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Damage"] = DifferentlyNamedAbilityKVs.Damage] = "Damage";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ManaCost"] = DifferentlyNamedAbilityKVs.ManaCost] = "ManaCost";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ModifierSupportValue"] = DifferentlyNamedAbilityKVs.ModifierSupportValue] = "ModifierSupportValue";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ModifierSupportBonus"] = DifferentlyNamedAbilityKVs.ModifierSupportBonus] = "ModifierSupportBonus";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["UnitTargetTeam"] = DifferentlyNamedAbilityKVs.UnitTargetTeam] = "UnitTargetTeam";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["CastAnimation"] = DifferentlyNamedAbilityKVs.CastAnimation] = "CastAnimation";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["UnitDamageType"] = DifferentlyNamedAbilityKVs.UnitDamageType] = "UnitDamageType";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Sound"] = DifferentlyNamedAbilityKVs.Sound] = "Sound";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["CastGestureSlot"] = DifferentlyNamedAbilityKVs.CastGestureSlot] = "CastGestureSlot";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["UnitTargetType"] = DifferentlyNamedAbilityKVs.UnitTargetType] = "UnitTargetType";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["GrantedByScepter"] = DifferentlyNamedAbilityKVs.GrantedByScepter] = "GrantedByScepter";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["UnitTargetFlags"] = DifferentlyNamedAbilityKVs.UnitTargetFlags] = "UnitTargetFlags";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["GrantedByShard"] = DifferentlyNamedAbilityKVs.GrantedByShard] = "GrantedByShard";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Charges"] = DifferentlyNamedAbilityKVs.Charges] = "Charges";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ChargeRestoreTime"] = DifferentlyNamedAbilityKVs.ChargeRestoreTime] = "ChargeRestoreTime";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["ChannelAnimation"] = DifferentlyNamedAbilityKVs.ChannelAnimation] = "ChannelAnimation";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["TextureName"] = DifferentlyNamedAbilityKVs.TextureName] = "TextureName";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["Precache"] = DifferentlyNamedAbilityKVs.Precache] = "Precache";
-    DifferentlyNamedAbilityKVsDynamic[DifferentlyNamedAbilityKVsDynamic["AbilitySpecials"] = DifferentlyNamedAbilityKVs.AbilitySpecials] = "AbilitySpecials";
+    DifferentlyNamedAbilityKVsDynamic["Type"] = "AbilityType";
+    DifferentlyNamedAbilityKVsDynamic["Behavior"] = "AbilityBehavior";
+    DifferentlyNamedAbilityKVsDynamic["OnCastBar"] = "OnCastbar";
+    DifferentlyNamedAbilityKVsDynamic["OnLearnBar"] = "OnLearnbar";
+    DifferentlyNamedAbilityKVsDynamic["CastRange"] = "AbilityCastRange";
+    DifferentlyNamedAbilityKVsDynamic["CastRangeBuffer"] = "AbilityCastRangeBuffer";
+    DifferentlyNamedAbilityKVsDynamic["CastPoint"] = "AbilityCastPoint";
+    DifferentlyNamedAbilityKVsDynamic["ChannelTime"] = "AbilityChannelTime";
+    DifferentlyNamedAbilityKVsDynamic["Cooldown"] = "AbilityCooldown";
+    DifferentlyNamedAbilityKVsDynamic["Duration"] = "AbilityDuration";
+    DifferentlyNamedAbilityKVsDynamic["SharedCooldown"] = "AbilitySharedCooldown";
+    DifferentlyNamedAbilityKVsDynamic["Damage"] = "AbilityDamage";
+    DifferentlyNamedAbilityKVsDynamic["ManaCost"] = "AbilityManaCost";
+    DifferentlyNamedAbilityKVsDynamic["ModifierSupportValue"] = "AbilityModifierSupportValue";
+    DifferentlyNamedAbilityKVsDynamic["ModifierSupportBonus"] = "AbilityModifierSupportBonus";
+    DifferentlyNamedAbilityKVsDynamic["UnitTargetTeam"] = "AbilityUnitTargetTeam";
+    DifferentlyNamedAbilityKVsDynamic["CastAnimation"] = "AbilityCastAnimation";
+    DifferentlyNamedAbilityKVsDynamic["UnitDamageType"] = "AbilityUnitDamageType";
+    DifferentlyNamedAbilityKVsDynamic["Sound"] = "AbilitySound";
+    DifferentlyNamedAbilityKVsDynamic["CastGestureSlot"] = "AbilityCastGestureSlot";
+    DifferentlyNamedAbilityKVsDynamic["UnitTargetType"] = "AbilityUnitTargetType";
+    DifferentlyNamedAbilityKVsDynamic["GrantedByScepter"] = "IsGrantedByScepter";
+    DifferentlyNamedAbilityKVsDynamic["UnitTargetFlags"] = "AbilityUnitTargetFlags";
+    DifferentlyNamedAbilityKVsDynamic["GrantedByShard"] = "IsGrantedByShard";
+    DifferentlyNamedAbilityKVsDynamic["Charges"] = "AbilityCharges";
+    DifferentlyNamedAbilityKVsDynamic["ChargeRestoreTime"] = "AbilityChargeRestoreTime";
+    DifferentlyNamedAbilityKVsDynamic["ChannelAnimation"] = "AbilityChannelAnimation";
+    DifferentlyNamedAbilityKVsDynamic["TextureName"] = "AbilityTextureName";
+    DifferentlyNamedAbilityKVsDynamic["Precache"] = "precache";
+    DifferentlyNamedAbilityKVsDynamic["AbilitySpecials"] = "AbilitySpecial";
 })(DifferentlyNamedAbilityKVsDynamic || (DifferentlyNamedAbilityKVsDynamic = {}));
 var AbilityBuilder;
 (function (AbilityBuilder) {
     function AddAbilitySpecialInteger(name, values) {
         var ability_special_block = {
-            VarType: VarTypes.INTEGER,
+            VarType: "FIELD_INTEGER" /* INTEGER */,
             Name: name,
             Values: values
         };
@@ -49,7 +49,7 @@ var AbilityBuilder;
     AbilityBuilder.AddAbilitySpecialInteger = AddAbilitySpecialInteger;
     function AddAbilitySpecialFloat(name, values) {
         var ability_special_block = {
-            VarType: VarTypes.FLOAT,
+            VarType: "FIELD_FLOAT" /* FLOAT */,
             Name: name,
             Values: values
         };
