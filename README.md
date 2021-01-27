@@ -35,5 +35,6 @@ To test: in the resource folder, go to `scripts/npc/abilities`, open `abilityDat
     "shell_cmd": "npm run dev"
 }
 ```
-* Save as any name like `dota_ts.sublime-build`
-* Have any file from the project open -> press Ctrl + Shift + B -> select `dota_ts` -> console opens and it is run, is closed with esc, will still continue to compile everything until sublime is closed.
+* Save as any name like `ability_maker_ts.sublime-build` under `AppData/Roaming/Sublime Text 3/Packages/User`
+* Have any file from the project open -> press Ctrl + Shift + B -> select `ability_maker_ts` -> console opens and it is run, is closed with esc, will still continue to compile everything until sublime is closed.
+* If you want to stop the process earlier you can do so with Tools > Cancel Build
