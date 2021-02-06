@@ -1,7 +1,3 @@
-// import { AbilitySpecialBlock, DifferentlyNamedAbilityKVs, PrecacheKV, PrecacheType, VarTypes } from "./abilitymakerInterfaces";
-
-// import { AbilitySpecialBlock, DifferentlyNamedAbilityKVs, PrecacheKV, PrecacheType, VarTypes } from "@shushishtok/ability_generator/output/code/abilitymakerInterfaces";
-
 enum DifferentlyNamedAbilityKVsDynamic
 {
     Type = DifferentlyNamedAbilityKVs.Type,
@@ -36,7 +32,8 @@ enum DifferentlyNamedAbilityKVsDynamic
     AbilitySpecials = DifferentlyNamedAbilityKVs.AbilitySpecials,
 }
 
-export namespace AbilityBuilder {
+export namespace AbilityBuilder
+{
 	export function AddAbilitySpecialInteger(name: string, values: number | Array<number>): AbilitySpecialBlock
 	{
 		const ability_special_block: AbilitySpecialBlock =

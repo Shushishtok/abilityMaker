@@ -10,14 +10,14 @@ interface packageSnippet {
 
 // define package insertions
 const devScripts = [
-	["dev:abilitiesCompiler", "tsc --project node_modules/~kv/abilities/tsconfig.json"],
-    ["dev:abilitiesCompilerWatcher", "tsc --project node_modules/~kv/abilities/tsconfig.json --watch"],
-	["dev:runAbilitiesWatcher", "node node_modules/@shushishtok/ability_generator/fsWatcher.js"],
-	["dev:abilitiesGeneratorWatcher", "tsc --project node_modules/@shushishtok/ability_generator/tsconfig.json"]
+	["dev:DotaKVCompiler", "tsc --project node_modules/~kv/dota-kv/tsconfig.json"],
+    ["dev:DotaKVCompilerWatcher", "tsc --project node_modules/~kv/dota-kv/tsconfig.json --watch"],
+	["dev:runDotaKVWatcher", "node node_modules/@shushishtok/dota-kv-maker/fsWatcher.js"],
+	["dev:DotaKVGeneratorWatcher", "tsc --project node_modules/@shushishtok/dota-kv-maker/tsconfig.json"]
 ]
 const initScripts = [
 	"link-module-alias",
-	"node node_modules/@shushishtok/ability_generator/init.js",
+	"node node_modules/@shushishtok/dota-kv-maker/init.js",
 ]
 const aliases = [
 	["~kv", "scripts/npc"],
@@ -103,7 +103,7 @@ function CheckPackage() {
 			if (!goalPackage.devDependencies) {
 				goalPackage.devDependencies = {};
 			}
-			origPackage.dependencies!["@shushishtok/ability_generator"] = "latest"
+			origPackage.dependencies!["@shushishtok/dota-kv-maker"] = "latest"
 
 			for (const name in origPackage.devDependencies!) {
 				if (!goalPackage.devDependencies.hasOwnProperty(name) && !goalPackage.dependencies.hasOwnProperty(name)) {

@@ -1,3 +1,5 @@
+/// <reference path="./DotaKVAbilityInterfaces"/>
+
 interface AbilityKV
 {
     Name: string;

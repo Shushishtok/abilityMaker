@@ -1,4 +1,4 @@
-import { AbilityBuilder } from './abilityBuilder';
+import { AbilityBuilder } from './DotaKVBuilder';
 import * as fs from 'fs';
 import { KVObject, serialize, createDuplicateKeyArray } from 'valve-kv';
 

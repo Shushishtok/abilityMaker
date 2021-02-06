@@ -1,19 +1,18 @@
 import * as fs from 'fs';
-import { clearScreenDown } from 'readline';
-import { AbilityCompiler } from './abilitymakerCompiler';
+import { AbilityCompiler } from './DotaKVCompiler';
 const watch = require("node-watch");
 
 let completeData: {[path: string]: Array<AbilityKV>} = {};
 let gathering = false;
-const resourcePath = "node_modules/~kv/abilities";
+const resourcePath = "node_modules/~kv/dota-kv";
 const generatorPath = __dirname;
 
 let compiler = loadCompiler();
 
-let watcher = watch([resourcePath, generatorPath + "/abilitymakerCompiler.js"], {recursive: true})
+let watcher = watch([resourcePath, generatorPath + "/DotaKVBuilder.js"], {recursive: true})
 watcher.on("change", (eventType ?: 'update' | 'remove' | undefined, filePath ?: string) => {
 	if (!filePath) return;
-	if (filePath.includes("abilitymakerCompiler.js")) {
+	if (filePath.includes("DotaKVBuilder.js")) {
 		compiler = loadCompiler();
 	}
 	let match = /(node_modules[\\/])?(.*[\/|\\](\w+)).js/g.exec(filePath);
@@ -70,8 +69,8 @@ function flushData() {
 function loadCompiler(): AbilityCompiler
 {
     // Clear require cache
-    delete require.cache[require.resolve(generatorPath + "/abilitymakerCompiler")]
+    delete require.cache[require.resolve(generatorPath + "/DotaKVBuilder")]
     // Require latest compiler version
-    const compilerClass: new () => AbilityCompiler = require(generatorPath + "/abilitymakerCompiler").AbilityCompiler;
+    const compilerClass: new () => AbilityCompiler = require(generatorPath + "/DotaKVBuilder").AbilityCompiler;
     return new compilerClass();
 }
